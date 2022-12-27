@@ -9,7 +9,20 @@ const bool = true;
 
 root.render(
   <div>
-    <App></App>
+    {/* <App
+      children={
+        <>
+          <h1>My First React App</h1>
+          <h2>And a Fancy Subtitle</h2>
+        </>
+      }
+    /> */}
+
+    {/* This is same as above code */}
+    <App>
+      <h1>My First React App</h1>
+      <h2>And a Fancy Subtitle</h2>
+    </App>
   </div>
 );
 
