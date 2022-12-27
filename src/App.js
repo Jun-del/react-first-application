@@ -1,11 +1,23 @@
+import { useState } from "react";
 import Clicker from "./Clicker.js";
 
 export default function App() {
-  console.log("App rendered");
+  const [hasClicker, setHasClicker] = useState(true);
+
+  const toggleClickerClick = () => {
+    setHasClicker(!hasClicker);
+  };
 
   return (
     <>
-      <Clicker></Clicker>
+      <button onClick={toggleClickerClick}>
+        {hasClicker ? "Hide" : "Show"} Clicker
+      </button>
+
+      {/* {hasClicker ? <Clicker /> : null} */}
+
+      {/* Check left and right condition; if true, return clicker */}
+      {hasClicker && <Clicker />}
     </>
   );
 
