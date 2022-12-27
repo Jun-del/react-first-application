@@ -16,8 +16,14 @@ export default function Clicker() {
     // The logical AND (&&) (logical conjunction) operator for a set of boolean operands will be
     // true if and only if all the operands are true. Otherwise it will be false.
     // const savedCount = parseInt(localStorage.getItem("count") ?? 0);
+
     // Save the count to the state (retain the value between page reloads)
     // setCount(savedCount);
+
+    // Remove the count from the local storage when the component is unmounted
+    return () => {
+      localStorage.removeItem("count");
+    };
   }, []);
 
   // Trigger the function only when the count changes
