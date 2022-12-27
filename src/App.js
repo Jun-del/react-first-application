@@ -8,6 +8,8 @@ export default function App() {
     setHasClicker(!hasClicker);
   };
 
+  // console.log(`hsl(${Math.random() * 360} deg , 100%, 70%)`);
+
   return (
     <>
       <button onClick={toggleClickerClick}>
@@ -16,8 +18,23 @@ export default function App() {
 
       {/* {hasClicker ? <Clicker /> : null} */}
 
-      {/* Check left and right condition; if true, return clicker */}
-      {hasClicker && <Clicker />}
+      {/* Check left AND (&&) right condition; if true, return clicker */}
+      {hasClicker && (
+        <>
+          <Clicker
+            keyName="countA"
+            color={`hsl(${Math.random() * 360}deg, 100%, 70%)`}
+          />
+          <Clicker
+            keyName="countB"
+            color={`hsl(${Math.random() * 360}deg , 100%, 70%)`}
+          />
+          <Clicker
+            keyName="countC"
+            color={`hsl(${Math.random() * 360}deg , 100%, 70%)`}
+          />
+        </>
+      )}
     </>
   );
 

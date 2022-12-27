@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-export default function Clicker() {
+export default function Clicker({ keyName, color = "cyan" }) {
   //   const countState = useState(0);
   //   const count = countState[0];
   //   const setCount = countState[1];
 
   const [count, setCount] = useState(
-    parseInt(localStorage.getItem("count") ?? 0)
+    parseInt(localStorage.getItem(keyName) ?? 0)
   );
 
   // To call the function only on the first render, use empty array []
@@ -22,13 +22,13 @@ export default function Clicker() {
 
     // Remove the count from the local storage when the component is unmounted
     return () => {
-      localStorage.removeItem("count");
+      localStorage.removeItem(keyName);
     };
   }, []);
 
   // Trigger the function only when the count changes
   useEffect(() => {
-    localStorage.setItem("count", count);
+    localStorage.setItem(keyName, count);
   }, [count]);
 
   const buttonClick = () => {
@@ -39,7 +39,7 @@ export default function Clicker() {
 
   return (
     <div>
-      <div>Clicks count: {count}</div>
+      <div style={{ color: color }}>Clicks count: {count}</div>
       <button onClick={buttonClick}>Click me</button>
     </div>
   );
