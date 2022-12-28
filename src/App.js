@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Clicker from "./Clicker.js";
 
-export default function App({ children }) {
+export default function App({ clickersCount, children }) {
   const [hasClicker, setHasClicker] = useState(true);
   const [count, setCount] = useState(0);
 
@@ -12,6 +12,13 @@ export default function App({ children }) {
   const increment = () => {
     setCount(count + 1);
   };
+
+  // Make an array of length clickersCount with values
+  // const tempArray = [...Array(clickersCount)]; // [undefined, undefined, undefined, undefined]
+
+  // tempArray.map((value, index) => {
+  //   console.log(value, index);
+  // });
 
   // console.log(`hsl(${Math.random() * 360} deg , 100%, 70%)`);
 
@@ -31,21 +38,20 @@ export default function App({ children }) {
       {/* Check left AND (&&) right condition; if true, return clicker */}
       {hasClicker && (
         <>
-          <Clicker
+          {[...Array(clickersCount)].map((value, index) => (
+            <Clicker
+              key={index}
+              increment={increment}
+              keyName={`count${index}`}
+              color={`hsl(${Math.random() * 360}deg, 100%, 70%)`}
+            />
+          ))}
+
+          {/* <Clicker
             increment={increment}
             keyName="countA"
             color={`hsl(${Math.random() * 360}deg, 100%, 70%)`}
-          />
-          <Clicker
-            increment={increment}
-            keyName="countB"
-            color={`hsl(${Math.random() * 360}deg , 100%, 70%)`}
-          />
-          <Clicker
-            increment={increment}
-            keyName="countC"
-            color={`hsl(${Math.random() * 360}deg , 100%, 70%)`}
-          />
+          /> */}
         </>
       )}
     </>
