@@ -19,7 +19,7 @@ root.render(
     /> */}
 
     {/* This is same as above code */}
-    <App clickersCount={10}>
+    <App clickersCount={3}>
       <h1>My First React App</h1>
       <h2>And a Fancy Subtitle</h2>
     </App>
